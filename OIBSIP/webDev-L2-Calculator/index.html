@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Calcura - A modern responsive calculator"
+    >
+
+    <title>Calcura | Modern Calculator</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <main class="page">
+
+        <section class="calculator" aria-label="Calcura Calculator">
+
+            <!-- HEADER -->
+            <header class="calculator-header">
+
+                <div class="header-top">
+
+                    <div>
+                        <h1>Calcura</h1>
+                        <p>Modern Calculator</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="theme-toggle"
+                        class="theme-toggle"
+                        aria-label="Switch to dark mode"
+                    >
+                        🌙
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- DISPLAY -->
+            <section class="display" aria-live="polite">
+
+                <div
+                    id="previous-display"
+                    class="previous-display"
+                ></div>
+
+                <div
+                    id="current-display"
+                    class="current-display"
+                >
+                    0
+                </div>
+
+            </section>
+
+
+            <!-- BUTTONS -->
+            <section class="buttons">
+
+                <!-- ROW 1 -->
+                <button
+                    type="button"
+                    class="action"
+                    data-action="clear"
+                >
+                    AC
+                </button>
+
+                <button
+                    type="button"
+                    class="action"
+                    data-action="backspace"
+                    aria-label="Backspace"
+                >
+                    ⌫
+                </button>
+
+                <button
+                    type="button"
+                    class="operator"
+                    data-action="percent"
+                >
+                    %
+                </button>
+
+                <button
+                    type="button"
+                    class="operator"
+                    data-operator="/"
+                >
+                    ÷
+                </button>
+
+
+                <!-- ROW 2 -->
+                <button
+                    type="button"
+                    data-number="7"
+                >
+                    7
+                </button>
+
+                <button
+                    type="button"
+                    data-number="8"
+                >
+                    8
+                </button>
+
+                <button
+                    type="button"
+                    data-number="9"
+                >
+                    9
+                </button>
+
+                <button
+                    type="button"
+                    class="operator"
+                    data-operator="*"
+                >
+                    ×
+                </button>
+
+
+                <!-- ROW 3 -->
+                <button
+                    type="button"
+                    data-number="4"
+                >
+                    4
+                </button>
+
+                <button
+                    type="button"
+                    data-number="5"
+                >
+                    5
+                </button>
+
+                <button
+                    type="button"
+                    data-number="6"
+                >
+                    6
+                </button>
+
+                <button
+                    type="button"
+                    class="operator"
+                    data-operator="-"
+                >
+                    −
+                </button>
+
+
+                <!-- ROW 4 -->
+                <button
+                    type="button"
+                    data-number="1"
+                >
+                    1
+                </button>
+
+                <button
+                    type="button"
+                    data-number="2"
+                >
+                    2
+                </button>
+
+                <button
+                    type="button"
+                    data-number="3"
+                >
+                    3
+                </button>
+
+                <button
+                    type="button"
+                    class="operator"
+                    data-operator="+"
+                >
+                    +
+                </button>
+
+
+                <!-- ROW 5 -->
+                <button
+                    type="button"
+                    class="zero"
+                    data-number="0"
+                >
+                    0
+                </button>
+
+                <button
+                    type="button"
+                    data-action="decimal"
+                >
+                    .
+                </button>
+
+                <button
+                    type="button"
+                    class="equals"
+                    data-action="equals"
+                >
+                    =
+                </button>
+
+            </section>
+
+
+            <!-- HISTORY -->
+            <section class="history">
+
+                <div class="history-header">
+
+                    <div>
+                        <h2>History</h2>
+                        <p>Your recent calculations</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="clear-history"
+                        class="clear-history"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="history-list"
+                    class="history-list"
+                >
+
+                    <p class="history-empty">
+                        No calculations yet.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

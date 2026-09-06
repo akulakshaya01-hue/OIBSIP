@@ -1,0 +1,793 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================
+   ROOT VARIABLES
+========================================= */
+
+:root {
+
+    --body-bg:
+        radial-gradient(
+            circle at top,
+            #e5e7eb 0%,
+            #f3f4f6 45%,
+            #ffffff 100%
+        );
+
+    --calculator-bg: rgba(255, 255, 255, 0.97);
+
+    --display-bg: #f3f4f6;
+
+    --text-primary: #111827;
+
+    --text-secondary: #6b7280;
+
+    --button-bg: #e5e7eb;
+
+    --button-hover: #d1d5db;
+
+    --operator-bg: #d1d5db;
+
+    --action-bg: #cbd5e1;
+
+    --equals-bg: #2563eb;
+
+    --equals-hover: #1d4ed8;
+
+    --history-bg: #f3f4f6;
+
+    --history-hover: #e5e7eb;
+
+    --border-color: rgba(17, 24, 39, 0.1);
+
+    --shadow:
+        0 25px 60px rgba(0, 0, 0, 0.15);
+
+    --button-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
+   DARK THEME VARIABLES
+========================================= */
+
+body.dark-theme {
+
+    --body-bg:
+        radial-gradient(
+            circle at top,
+            #374151 0%,
+            #111827 45%,
+            #030712 100%
+        );
+
+    --calculator-bg: rgba(17, 24, 39, 0.97);
+
+    --display-bg: #030712;
+
+    --text-primary: #ffffff;
+
+    --text-secondary: #9ca3af;
+
+    --button-bg: #374151;
+
+    --button-hover: #4b5563;
+
+    --operator-bg: #4b5563;
+
+    --action-bg: #4b5563;
+
+    --equals-bg: #2563eb;
+
+    --equals-hover: #3b82f6;
+
+    --history-bg: #1f2937;
+
+    --history-hover: #374151;
+
+    --border-color: rgba(255, 255, 255, 0.08);
+
+    --shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45);
+
+    --button-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--body-bg);
+
+    color: var(--text-primary);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px 16px;
+}
+
+
+/* =========================================
+   CALCULATOR
+========================================= */
+
+.calculator {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    background: var(--calculator-bg);
+
+    border-radius: 28px;
+
+    padding: 24px;
+
+    box-shadow: var(--shadow);
+
+    border: 1px solid var(--border-color);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.calculator-header {
+
+    margin-bottom: 20px;
+}
+
+
+.header-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.calculator-header h1 {
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.8px;
+
+    color: var(--text-primary);
+}
+
+
+.calculator-header p {
+
+    margin-top: 3px;
+
+    font-size: 14px;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================================
+   THEME BUTTON
+========================================= */
+
+.theme-toggle {
+
+    width: 46px;
+
+    height: 46px;
+
+    min-height: 46px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border-color);
+
+    background: var(--button-bg);
+
+    color: var(--text-primary);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    box-shadow: var(--button-shadow);
+
+    transition:
+        background 0.25s ease,
+        transform 0.15s ease;
+}
+
+
+.theme-toggle:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+.theme-toggle:active {
+
+    transform: scale(0.9);
+
+}
+
+
+/* =========================================
+   DISPLAY
+========================================= */
+
+.display {
+
+    width: 100%;
+
+    min-height: 125px;
+
+    background: var(--display-bg);
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: flex-end;
+
+    overflow: hidden;
+
+    transition: background 0.3s ease;
+}
+
+
+.previous-display {
+
+    width: 100%;
+
+    min-height: 25px;
+
+    text-align: right;
+
+    font-size: 15px;
+
+    color: var(--text-secondary);
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+
+    scrollbar-width: none;
+}
+
+
+.previous-display::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+.current-display {
+
+    width: 100%;
+
+    margin-top: 5px;
+
+    text-align: right;
+
+    font-size: clamp(32px, 8vw, 46px);
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+
+    scrollbar-width: none;
+}
+
+
+.current-display::-webkit-scrollbar {
+
+    display: none;
+}
+
+
+/* =========================================
+   BUTTON GRID
+========================================= */
+
+.buttons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+/* =========================================
+   CALCULATOR BUTTONS
+========================================= */
+
+.buttons button {
+
+    min-height: 64px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: var(--button-bg);
+
+    color: var(--text-primary);
+
+    font-size: 20px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    box-shadow: var(--button-shadow);
+
+    transition:
+        background 0.18s ease,
+        transform 0.12s ease,
+        color 0.18s ease;
+}
+
+
+.buttons button:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+.buttons button:active {
+
+    transform: scale(0.94);
+
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.buttons .action {
+
+    background: var(--action-bg);
+
+}
+
+
+.buttons .action:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+/* =========================================
+   OPERATOR BUTTONS
+========================================= */
+
+.buttons .operator {
+
+    background: var(--operator-bg);
+
+    font-size: 22px;
+
+}
+
+
+.buttons .operator:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+/* =========================================
+   EQUALS
+========================================= */
+
+.buttons .equals {
+
+    background: var(--equals-bg);
+
+    color: #ffffff;
+
+}
+
+
+.buttons .equals:hover {
+
+    background: var(--equals-hover);
+
+}
+
+
+/* =========================================
+   ZERO BUTTON
+========================================= */
+
+.buttons .zero {
+
+    grid-column: span 2;
+
+}
+
+
+/* =========================================
+   HISTORY
+========================================= */
+
+.history {
+
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border-color);
+}
+
+
+.history-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+
+.history-header h2 {
+
+    font-size: 19px;
+
+    font-weight: 750;
+
+    color: var(--text-primary);
+}
+
+
+.history-header p {
+
+    margin-top: 3px;
+
+    font-size: 12px;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================================
+   CLEAR HISTORY
+========================================= */
+
+.clear-history {
+
+    border: none;
+
+    background: var(--button-bg);
+
+    color: var(--text-primary);
+
+    border-radius: 10px;
+
+    padding: 8px 12px;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.clear-history:hover {
+
+    background: var(--button-hover);
+
+}
+
+
+.clear-history:active {
+
+    transform: scale(0.95);
+
+}
+
+
+/* =========================================
+   HISTORY LIST
+========================================= */
+
+.history-list {
+
+    max-height: 190px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    scrollbar-width: thin;
+}
+
+
+/* =========================================
+   HISTORY ITEM
+========================================= */
+
+.history-item {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--history-bg);
+
+    padding: 11px 13px;
+
+    text-align: right;
+
+    cursor: pointer;
+
+    color: var(--text-primary);
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.history-item:hover {
+
+    background: var(--history-hover);
+
+}
+
+
+.history-item:active {
+
+    transform: scale(0.98);
+
+}
+
+
+.history-expression {
+
+    display: block;
+
+    font-size: 12px;
+
+    color: var(--text-secondary);
+
+    margin-bottom: 3px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.history-result {
+
+    display: block;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================
+   EMPTY HISTORY
+========================================= */
+
+.history-empty {
+
+    padding: 15px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: var(--text-secondary);
+}
+
+
+/* =========================================
+   FOCUS ACCESSIBILITY
+========================================= */
+
+button:focus-visible {
+
+    outline: 3px solid rgba(37, 99, 235, 0.45);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .page {
+
+        padding: 15px 10px;
+
+        align-items: flex-start;
+    }
+
+
+    .calculator {
+
+        margin-top: 10px;
+
+        padding: 18px;
+
+        border-radius: 22px;
+    }
+
+
+    .calculator-header h1 {
+
+        font-size: 27px;
+    }
+
+
+    .display {
+
+        min-height: 110px;
+
+        padding: 17px;
+    }
+
+
+    .buttons {
+
+        gap: 8px;
+    }
+
+
+    .buttons button {
+
+        min-height: 58px;
+
+        border-radius: 14px;
+
+        font-size: 18px;
+    }
+
+
+    .theme-toggle {
+
+        width: 42px;
+
+        height: 42px;
+
+        min-height: 42px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL SCREENS
+========================================= */
+
+@media (max-width: 350px) {
+
+    .calculator {
+
+        padding: 14px;
+    }
+
+
+    .buttons button {
+
+        min-height: 52px;
+
+        font-size: 17px;
+    }
+
+
+    .display {
+
+        min-height: 100px;
+    }
+
+}
