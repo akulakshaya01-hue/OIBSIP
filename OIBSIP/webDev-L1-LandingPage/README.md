@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📚 StudyNest — A Smarter Space for Students
 
 > **Plan your study. Focus on what matters. Keep moving forward.**
@@ -101,7 +100,7 @@ WebDev-L1-LandingPage/
 │
 ├── index.html
 ├── style.css
-=======
+└── README.md
 # 📚 StudyNest — A Smarter Space for Students
 
 > **Plan your study. Focus on what matters. Keep moving forward.**
@@ -204,5 +203,4 @@ WebDev-L1-LandingPage/
 │
 ├── index.html
 ├── style.css
->>>>>>> a6a2f8cab7ff74f60cf0ebd634b5e706834781fd
 └── README.md

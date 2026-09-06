@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempora | Temperature Converter</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="app">
+
+        <section class="converter-card">
+
+            <div class="brand">
+                <div class="brand-icon">°</div>
+
+                <div>
+                    <p class="eyebrow">TEMPERATURE TOOL</p>
+                    <h1>Tempora</h1>
+                </div>
+            </div>
+
+            <p class="intro">
+                Convert temperatures instantly between Celsius,
+                Fahrenheit, and Kelvin.
+            </p>
+
+            <div class="input-section">
+
+                <label for="temperature">Temperature</label>
+
+                <div class="input-row">
+                    <input
+                        type="number"
+                        id="temperature"
+                        placeholder="Enter a value"
+                        step="any"
+                        aria-label="Temperature value"
+                    >
+
+                    <select id="unit" aria-label="Temperature unit">
+                        <option value="C">Celsius (°C)</option>
+                        <option value="F">Fahrenheit (°F)</option>
+                        <option value="K">Kelvin (K)</option>
+                    </select>
+                </div>
+
+                <p id="error-message" class="error-message"></p>
+
+                <button id="convert-btn" type="button">
+                    Convert Temperature
+                    <span>→</span>
+                </button>
+
+            </div>
+
+            <section class="results" aria-live="polite">
+
+                <div class="result-card">
+                    <span class="result-label">Celsius</span>
+                    <strong id="celsius-result">—</strong>
+                    <small>°C</small>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-label">Fahrenheit</span>
+                    <strong id="fahrenheit-result">—</strong>
+                    <small>°F</small>
+                </div>
+
+                <div class="result-card">
+                    <span class="result-label">Kelvin</span>
+                    <strong id="kelvin-result">—</strong>
+                    <small>K</small>
+                </div>
+
+            </section>
+
+            <footer>
+                <span>Built with HTML • CSS • JavaScript</span>
+                <span>Level 1 · Task 3</span>
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
