@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="TaskFlow - A modern and responsive task management application."
+    >
+
+    <title>TaskFlow | Smart To-Do App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-mark">T</div>
+
+                <div>
+                    <h1>TaskFlow</h1>
+                    <span>Smart productivity</span>
+                </div>
+            </div>
+
+            <nav class="side-nav" aria-label="Task navigation">
+
+                <button class="nav-item active" data-filter="all">
+                    <span class="nav-icon">◈</span>
+                    <span>All Tasks</span>
+                    <span class="nav-count" id="allCount">0</span>
+                </button>
+
+                <button class="nav-item" data-filter="pending">
+                    <span class="nav-icon">○</span>
+                    <span>Pending</span>
+                    <span class="nav-count" id="pendingCount">0</span>
+                </button>
+
+                <button class="nav-item" data-filter="completed">
+                    <span class="nav-icon">✓</span>
+                    <span>Completed</span>
+                    <span class="nav-count" id="completedCount">0</span>
+                </button>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Stay focused.</p>
+                <span>One task at a time.</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">PERSONAL WORKSPACE</p>
+                    <h2 id="pageTitle">All Tasks</h2>
+                </div>
+
+                <div class="date-display">
+                    <span id="currentDate"></span>
+                </div>
+
+            </header>
+
+
+            <!-- Progress Card -->
+            <section class="progress-card">
+
+                <div class="progress-info">
+                    <div>
+                        <p class="progress-label">Today's progress</p>
+                        <h3>
+                            <span id="progressPercent">0</span>% completed
+                        </h3>
+                    </div>
+
+                    <div class="progress-number">
+                        <span id="completedSummary">0</span>
+                        <small>done</small>
+                    </div>
+                </div>
+
+                <div class="progress-track">
+                    <div
+                        class="progress-bar"
+                        id="progressBar"
+                        style="width: 0%"
+                    ></div>
+                </div>
+
+            </section>
+
+
+            <!-- Add Task -->
+            <section class="task-input-card">
+
+                <form id="taskForm" autocomplete="off">
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">＋</span>
+
+                        <input
+                            type="text"
+                            id="taskInput"
+                            placeholder="What needs to be done?"
+                            maxlength="120"
+                            aria-label="New task"
+                        >
+
+                    </div>
+
+                    <button type="submit" class="add-button">
+                        Add Task
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- Task Area -->
+            <section class="tasks-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <p class="eyebrow">YOUR LIST</p>
+                        <h3 id="taskHeading">Tasks</h3>
+                    </div>
+
+                    <button
+                        id="clearCompleted"
+                        class="clear-button"
+                        type="button"
+                    >
+                        Clear completed
+                    </button>
+
+                </div>
+
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+
+                    <div class="empty-icon">✓</div>
+
+                    <h3 id="emptyTitle">You're all caught up</h3>
+
+                    <p id="emptyMessage">
+                        Add a new task above to get started.
+                    </p>
+
+                </div>
+
+
+                <!-- Task List -->
+                <div
+                    class="task-list"
+                    id="taskList"
+                    aria-live="polite"
+                ></div>
+
+            </section>
+
+
+            <!-- Footer -->
+            <footer class="app-footer">
+                <span>TaskFlow</span>
+                <span>•</span>
+                <span>Built with HTML5, CSS3 & Vanilla JavaScript</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- Edit Modal -->
+    <div class="modal-overlay" id="editModal" hidden>
+
+        <div
+            class="edit-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="editTitle"
+        >
+
+            <div class="modal-header">
+                <div>
+                    <p class="eyebrow">EDIT TASK</p>
+                    <h3 id="editTitle">Update your task</h3>
+                </div>
+
+                <button
+                    class="close-modal"
+                    id="closeModal"
+                    type="button"
+                    aria-label="Close edit dialog"
+                >
+                    ×
+                </button>
+            </div>
+
+            <form id="editForm">
+
+                <label for="editInput">Task description</label>
+
+                <input
+                    type="text"
+                    id="editInput"
+                    maxlength="120"
+                    required
+                >
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        id="cancelEdit"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
